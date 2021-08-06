@@ -31,7 +31,7 @@ class LoginController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Password incorrect.',
-                'data' => '',
+                'data' => null,
             ], 400);
         }
 
@@ -53,7 +53,7 @@ class LoginController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'OK',
-            'data' => [],
+            'data' => null,
         ]);
 
     }

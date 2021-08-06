@@ -40,7 +40,7 @@ class BookController extends Controller
             'name' => ['required', 'string', 'max:100', 'unique:App\Models\Book,name'],
             'author' => ['required', 'string', 'max:100'],
             'publication_date' => ['required', 'date'],
-            'categories' => ['required', 'array',],
+            'categories' => ['required', 'array'],
             'categories.*' => ['nullable', 'exists:App\Models\Category,id']
         ]);
 
