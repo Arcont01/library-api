@@ -23,7 +23,7 @@ class Book extends Model
 
     public function getBorrowedAttribute(): bool
     {
-        return empty($this->user_id);
+        return !empty($this->user_id);
     }
 
     public function user()
