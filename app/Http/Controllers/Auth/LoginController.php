@@ -30,7 +30,7 @@ class LoginController extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Los datos son incorrectos.',
+                'message' => 'Password incorrect.',
                 'data' => '',
             ], 400);
         }
