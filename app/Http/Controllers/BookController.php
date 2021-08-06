@@ -167,7 +167,7 @@ class BookController extends Controller
     public function destroy(Book $book): JsonResponse
     {
         try {
-            $book->deleted();
+            $book->delete();
 
             return response()->json([
                 'status' => 'success',
