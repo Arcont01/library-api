@@ -25,7 +25,7 @@ Route::name('api.')->group(function () {
             'books' => \App\Http\Controllers\BookController::class,
             'categories' => \App\Http\Controllers\CategoryController::class,
         ]);
-        Route::post('books/borrow/{book}', [\App\Http\Controllers\BookController::class, 'borrow'])->name('books.borrow');
+        Route::put('books/borrow/{book}', [\App\Http\Controllers\BookController::class, 'borrow'])->name('books.borrow');
     });
 
 });

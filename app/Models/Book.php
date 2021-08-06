@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,12 +19,17 @@ class Book extends Model
     ];
 
     protected $casts = [
-        'publication_date' => 'date:Y-m-d',
+        'publication_date' => 'date',
     ];
 
     public function getBorrowedAttribute(): bool
     {
         return !empty($this->user_id);
+    }
+
+    public function setPublicationDateAttribute($publication_date)
+    {
+        $this->attributes['publication_date'] =  Carbon::parse($publication_date);
     }
 
     public function user()

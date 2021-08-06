@@ -49,7 +49,7 @@ class BookController extends Controller
 
         try {
             $book = Book::create($request->except('categories'));
-            $book->attach($request->categories);
+            $book->categories()->attach($request->categories);
 
             return response()->json([
                 'status' => 'success',
@@ -109,9 +109,8 @@ class BookController extends Controller
         }
 
         try {
-
             $book->update($request->except('categories'));
-            $book->sync($request->categories);
+            $book->categories()->sync($request->categories);
 
             return response()->json([
                 'status' => 'success',
