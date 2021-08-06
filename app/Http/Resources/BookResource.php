@@ -19,7 +19,8 @@ class BookResource extends JsonResource
             'name' => $this->name,
             'author' => $this->author,
             'publication_date' => $this->publication_date,
-            'user' => UserResource::collection($this->whenLoaded('user')),
+            'borrowed' => $this->borrowed,
+            'user' => new UserResource($this->user),
             'categories' => CategoryResource::collection($this->categories)
         ];
     }

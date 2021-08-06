@@ -6,6 +6,7 @@ use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -15,17 +16,11 @@ class BookController extends Controller
     /**
      * Display a listing of the books.
      *
-     * @return JsonResponse
+     * @return AnonymousResourceCollection
      */
-    public function index(): JsonResponse
+    public function index(): AnonymousResourceCollection
     {
-        return response()->json([
-            'status' => 'success',
-            'message' => 'OK',
-            'data' => [
-                'books' => BookResource::collection(Book::pagination(10))
-            ]
-        ]);
+        return  BookResource::collection(Book::paginate(10));
     }
 
     /**
