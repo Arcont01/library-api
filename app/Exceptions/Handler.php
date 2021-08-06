@@ -57,6 +57,12 @@ class Handler extends ExceptionHandler
        ], 401) : redirect()->guest(route('welcome'));
     }
 
+    /**
+     * @param Request $request
+     * @param Throwable $e
+     * @return JsonResponse|\Illuminate\Http\Response|Response
+     * @throws Throwable
+     */
     public function render($request, \Throwable $e)
     {
         if ($e instanceof ModelNotFoundException && $request->is('api*')) {
