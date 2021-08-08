@@ -19,7 +19,7 @@ class LoginController extends Controller
     {
         $validation = Validator::make($request->all(), [
             'email' => ['required', 'email', 'max:191', 'exists:users'],
-            'password' => ['required', 'min:8'],
+            'password' => ['required'],
         ]);
 
         if ($validation->fails()) {

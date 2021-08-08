@@ -20,7 +20,7 @@ Route::name('api.')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
-        Route::post('me', [\App\Http\Controllers\Auth\UserController::class, 'me'])->name('user.me');
+        Route::get('me', [\App\Http\Controllers\Auth\UserController::class, 'me'])->name('user.me');
         Route::apiResources([
             'books' => \App\Http\Controllers\BookController::class,
             'categories' => \App\Http\Controllers\CategoryController::class,
