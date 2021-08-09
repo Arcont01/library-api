@@ -15,17 +15,11 @@ class CategoryController extends Controller
     /**
      * Display a listing of the categories.
      *
-     * @return JsonResponse
+     * @return mixed
      */
-    public function index(): JsonResponse
+    public function index()
     {
-        return response()->json([
-            'status' => 'success',
-            'message' => 'OK',
-            'data' => [
-                'books' => CategoryResource::collection(Category::all())
-            ]
-        ]);
+        return Category::paginate(10);
     }
 
     /**
