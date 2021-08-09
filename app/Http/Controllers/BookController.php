@@ -57,7 +57,7 @@ class BookController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Book updated',
+                'message' => 'Book created',
                 'data' => null
             ]);
         } catch (\Throwable $th) {
