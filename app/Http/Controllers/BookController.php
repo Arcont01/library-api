@@ -16,11 +16,15 @@ class BookController extends Controller
     /**
      * Display a listing of the books.
      *
+     * @param Request $request
      * @return AnonymousResourceCollection
      */
-    public function index(): AnonymousResourceCollection
+    public function index(Request $request): AnonymousResourceCollection
     {
-        return  BookResource::collection(Book::paginate(10));
+        if ($request->filled('search')) {
+            return BookResource::collection(Book::where('name', 'like', "%$request->search%")->orWhere('author', 'like', "%$request->search%")->paginate(10));
+        }
+        return BookResource::collection(Book::paginate(10));
     }
 
     /**
@@ -36,7 +40,7 @@ class BookController extends Controller
             'author' => ['required', 'string', 'max:100'],
             'publication_date' => ['required', 'date'],
             'categories' => ['required', 'array'],
-            'categories.*' => ['nullable', 'exists:App\Models\Category,id']
+            'categories.*.id' => ['required', 'exists:App\Models\Category,id']
         ]);
 
         if ($validation->fails()) {
@@ -49,7 +53,7 @@ class BookController extends Controller
 
         try {
             $book = Book::create($request->except('categories'));
-            $book->categories()->attach($request->categories);
+            $book->categories()->attach(array_column($request->categories, 'id'));
 
             return response()->json([
                 'status' => 'success',
@@ -97,7 +101,7 @@ class BookController extends Controller
             'author' => ['required', 'string', 'max:100'],
             'publication_date' => ['required', 'date'],
             'categories' => ['required', 'array'],
-            'categories.*' => ['nullable', 'exists:App\Models\Category,id']
+            'categories.*.id' => ['nullable', 'exists:App\Models\Category,id']
         ]);
 
         if ($validation->fails()) {
@@ -110,7 +114,7 @@ class BookController extends Controller
 
         try {
             $book->update($request->except('categories'));
-            $book->categories()->sync($request->categories);
+            $book->categories()->sync(array_column($request->categories, 'id'));
 
             return response()->json([
                 'status' => 'success',

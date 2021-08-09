@@ -18,7 +18,7 @@ class BookResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'author' => $this->author,
-            'publication_date' => $this->publication_date->format('d-M-Y'),
+            'publication_date' => $this->publication_date->format('Y-m-d'),
             'borrowed' => $this->borrowed,
             'user' => new UserResource($this->user),
             'categories' => CategoryResource::collection($this->categories)

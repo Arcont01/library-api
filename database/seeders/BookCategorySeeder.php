@@ -17,7 +17,7 @@ class BookCategorySeeder extends Seeder
     {
         $books = Book::all();
         foreach ($books as $book){
-            $categories = Category::take(2)->get()->pluck('id')->toArray();
+            $categories = Category::inRandomOrder()->take(2)->get()->pluck('id')->toArray();
             $book->categories()->attach($categories);
         }
     }

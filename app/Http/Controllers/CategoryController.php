@@ -20,7 +20,7 @@ class CategoryController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        return CategoryResource::collection(Category::paginate(10));
+        return CategoryResource::collection(Category::all());
     }
 
     /**
