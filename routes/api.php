@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::name('api.')->group(function () {
+    Route::post('login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('auth.login');
+    Route::post('register', [\App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('auth.register');
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
+        Route::get('me', [\App\Http\Controllers\Auth\UserController::class, 'me'])->name('user.me');
+        Route::apiResources([
+            'books' => \App\Http\Controllers\BookController::class,
+            'categories' => \App\Http\Controllers\CategoryController::class,
+        ]);
+        Route::put('books/borrow/{book}', [\App\Http\Controllers\BookController::class, 'borrow'])->name('books.borrow');
+    });
+
 });

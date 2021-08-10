@@ -22,7 +22,9 @@ class BookFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->unique()->realText(10),
+            'author' => $this->faker->name(),
+            'publication_date' => $this->faker->date(),
         ];
     }
 }
