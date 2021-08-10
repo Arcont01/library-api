@@ -12,7 +12,7 @@ This application is a example to make a Library API with Laravel
 4. In the **.env** put your database accesses in the corresponding variables `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`.
 5. Install the project with the command `composer install` in the project root directory .
 6. Run the command `php artisan key:generate` in the project root directory to generate a new key.
-7. Run the migrations and seeders with the command `php artisan migrate --seed` in the project root directory.
+7. Run the migrations and seeders with the command `php artisan migrate --seed` in the project root directory, if you have have problem with seeder run `composer dump-autoload` in root directory.
 8. See the aplication un your IP or your custom domain to this application
 
 
