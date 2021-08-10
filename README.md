@@ -15,9 +15,6 @@ This application is a example to make a Library API with Laravel
 7. Run the migrations and seeders with the command `php artisan migrate --seed` in the project root directory.
 8. See the aplication un your IP or your custom domain to this application
 
-## Login in the admin
-
-Enter to the route **/** and use the credentials email: `test@test.com` and password: `password`
 
 ## Steps to unit testing
 
@@ -26,6 +23,10 @@ Enter to the route **/** and use the credentials email: `test@test.com` and pass
 ## Testing API Rest
 
 1. Import the Insomnia project in the Insomnia software (The project is in root directory)
+
+## Client 
+
+You can use the client in the [Library Client](https://github.com/Arcont01/library-client) repository, enter and follow the instructions to deploy
 
 ## License
 
