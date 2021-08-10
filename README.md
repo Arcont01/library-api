@@ -2,7 +2,7 @@
 
 ## About project
 
-This application is a example to make a ecommerce with Vue.Js and Laravel
+This application is a example to make a Library API with Laravel
 
 ## Steps to deploy
 
