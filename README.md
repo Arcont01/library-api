@@ -1,4 +1,4 @@
-# E-Commerce
+# Library API
 
 ## About project
 
